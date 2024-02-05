@@ -48,5 +48,10 @@
 }
 
 .newAssignmentForm button:disabled {
-  background: red;
+  background: #555;
+  /* Change the background color to gray */
+  color: #aaa;
+  /* Change the text color to a lighter shade */
+  cursor: not-allowed;
+  /* Set cursor to not-allowed */
 }
