@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { uppercase } from '../../helpers/stringHelpers';
+import styles from './header.module.css';  // Make sure to import the CSS file
 
 interface HeaderProps {
   onCreate: (newAssignmentTitle: string) => void;
@@ -18,9 +19,9 @@ export function Header({ onCreate }: HeaderProps) {
   };
 
   return (
-    <header className="header">
+    <header className={styles.header}>
       <h1>{uppercase('bcit')} Assignment Tracker</h1>
-      <form className="newAssignmentForm">
+      <form className={styles.newAssignmentForm}>
         <input
           placeholder="Add a new assignment"
           type="text"

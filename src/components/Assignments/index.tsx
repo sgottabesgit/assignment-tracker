@@ -1,6 +1,7 @@
 // src/components/Assignments/index.tsx
 import React from 'react';
 import { Assignment } from '../Assignment';
+import styles from './assignments.module.css';  // Make sure to import the CSS file
 
 interface AssignmentData {
   key: number;
@@ -16,20 +17,20 @@ interface AssignmentsProps {
 
 export function Assignments({ assignments, onDelete, onToggleComplete }: AssignmentsProps) {
   return (
-    <section className="assignments">
-      <header className="header">
+    <section className={styles.assignments}>
+      <header className={styles.header}>
         <div>
           <p>Created Assignments</p>
           <span>{assignments.length}</span>
         </div>
+
         <div>
-          <p className="textPurple">Completed Assignments</p>
-          <span>
-            {assignments.filter((assignment) => assignment.completed).length} of {assignments.length}
-          </span>
+          <p className={styles.textPurple}>Completed Assignments</p>
+          <span>{assignments.filter((assignment) => assignment.completed).length} of {assignments.length}</span>
         </div>
       </header>
-      <div className="list">
+
+      <div className={styles.list}>
         {assignments.map((assignment) => (
           <Assignment
             key={assignment.key}
