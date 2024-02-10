@@ -1,23 +1,33 @@
-import styles from "./header.module.css";
-import { AiOutlinePlusCircle } from "react-icons/ai";
-import { uppercase } from "../../helpers/stringHelpers";
-import { useState } from 'react'; // Import useState
+// src/components/Header/index.tsx
+import React, { useState } from 'react';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { uppercase } from '../../helpers/stringHelpers';
 
-export function Header() {
-  const [assignmentInput, setAssignmentInput] = useState(''); // Initialize state for assignment input
+interface HeaderProps {
+  onCreate: (newAssignmentTitle: string) => void;
+}
+
+export function Header({ onCreate }: HeaderProps) {
+  const [assignmentInput, setAssignmentInput] = useState('');
+
+  const handleCreate = () => {
+    if (assignmentInput.trim()) {
+      onCreate(assignmentInput);
+      setAssignmentInput('');
+    }
+  };
 
   return (
-    <header className={styles.header}>
-      {/* This is simply to show you how to use helper functions */}
-      <h1>{uppercase("bcit")} Assignment Tracker</h1>
-      <form className={styles.newAssignmentForm}>
+    <header className="header">
+      <h1>{uppercase('bcit')} Assignment Tracker</h1>
+      <form className="newAssignmentForm">
         <input
           placeholder="Add a new assignment"
           type="text"
-          value={assignmentInput} // Bind input value to state
-          onChange={(e) => setAssignmentInput(e.target.value)} // Update state on input change
+          value={assignmentInput}
+          onChange={(e) => setAssignmentInput(e.target.value)}
         />
-        <button disabled={!assignmentInput.trim()}> {/* Disable button if input is empty or contains only spaces */}
+        <button disabled={!assignmentInput.trim()} onClick={handleCreate}>
           Create <AiOutlinePlusCircle size={20} />
         </button>
       </form>

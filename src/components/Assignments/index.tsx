@@ -1,23 +1,44 @@
-import { Assignment } from "../Assignment";
-import styles from "./assignments.module.css";
+// src/components/Assignments/index.tsx
+import React from 'react';
+import { Assignment } from '../Assignment';
 
-export function Assignments() {
+interface AssignmentData {
+  key: number;
+  title: string;
+  completed: boolean;
+}
+
+interface AssignmentsProps {
+  assignments: AssignmentData[];
+  onDelete: (key: number) => void;
+  onToggleComplete: (key: number) => void;
+}
+
+export function Assignments({ assignments, onDelete, onToggleComplete }: AssignmentsProps) {
   return (
-    <section className={styles.assignments}>
-      <header className={styles.header}>
+    <section className="assignments">
+      <header className="header">
         <div>
           <p>Created Assignments</p>
-          <span>1</span>
+          <span>{assignments.length}</span>
         </div>
-
         <div>
-          <p className={styles.textPurple}>Completed Assignments</p>
-          <span>1 of 1</span>
+          <p className="textPurple">Completed Assignments</p>
+          <span>
+            {assignments.filter((assignment) => assignment.completed).length} of {assignments.length}
+          </span>
         </div>
       </header>
-
-      <div className={styles.list}>
-        <Assignment />
+      <div className="list">
+        {assignments.map((assignment) => (
+          <Assignment
+            key={assignment.key}
+            title={assignment.title}
+            completed={assignment.completed}
+            onDelete={() => onDelete(assignment.key)}
+            onToggleComplete={() => onToggleComplete(assignment.key)}
+          />
+        ))}
       </div>
     </section>
   );
