@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { uppercase } from '../../helpers/stringHelpers';
-import styles from './header.module.css';  // Make sure to import the CSS file
+import styles from './header.module.css';
 
 interface HeaderProps {
   onCreate: (newAssignmentTitle: string) => void;
