@@ -1,7 +1,7 @@
 // src/components/Assignments/index.tsx
 import React from 'react';
 import { Assignment } from '../Assignment';
-import styles from './assignments.module.css';  // Make sure to import the CSS file
+import styles from './assignments.module.css';
 
 interface AssignmentData {
   key: number;
