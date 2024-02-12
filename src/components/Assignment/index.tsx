@@ -1,4 +1,5 @@
 // src/components/Assignment/index.tsx
+import styles from "./assignment.module.css";
 import React from 'react';
 import { TbTrash } from 'react-icons/tb';
 
@@ -11,12 +12,12 @@ interface AssignmentProps {
 
 export function Assignment({ title, completed, onDelete, onToggleComplete }: AssignmentProps) {
   return (
-    <div className="assignment">
-      <button className="checkContainer" onClick={onToggleComplete}>
+    <div className={styles.assignment}>
+      <button className={styles.checkContainer} onClick={onToggleComplete}>
         <div />
       </button>
       <p>{title}</p>
-      <button className="deleteButton" onClick={onDelete}>
+      <button className={styles.deleteButton} onClick={onDelete}>
         <TbTrash size={20} />
       </button>
     </div>
