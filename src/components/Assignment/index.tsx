@@ -15,8 +15,8 @@ interface AssignmentProps {
 export function Assignment({ title, completed, onDelete, onToggleComplete }: AssignmentProps) {
   return (
     <div className={styles.assignment}>
-      <button className={styles.checkContainer} onClick={onToggleComplete}>
-        {completed ? <BsCheck size={20} /> : <div />}
+      <button className={`${styles.checkContainer} ${completed ? styles.completed : ''}`} onClick={onToggleComplete}>
+        {completed ? <BsCheck size={16} /> : <div />}
       </button>
       <p className={completed ? styles.textCompleted : ''}>{title}</p>
       <button className={styles.deleteButton} onClick={onDelete}>
@@ -25,3 +25,8 @@ export function Assignment({ title, completed, onDelete, onToggleComplete }: Ass
     </div>
   );
 }
+
+
+
+
+
